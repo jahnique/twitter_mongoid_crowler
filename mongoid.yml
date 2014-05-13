@@ -1,0 +1,6 @@
+development:
+  sessions:
+    default:
+      database: berlin
+      hosts:
+        - localhost:27017

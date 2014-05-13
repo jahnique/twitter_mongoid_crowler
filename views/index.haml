@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %title This is the Title in a title tag within the head tag
+    %link(rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css")
+    %link(rel="stylesheet" href="styles.css")
+    %script(src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js")
+    %script(src="leaflet-providers.js")
+    = include_gon
+
+  %body
+    #map
+
+    %script
+      var map = L.map('map').setView([52.5, 13.38], 11);
+      L.tileLayer.provider('Stamen.Watercolor').addTo(map);
+
+      gon.tweets.forEach(function(tweet) {
+      L.marker([tweet.location[0], tweet.location[1]]).addTo(map).bindPopup(tweet.text).closePopup();
+      });
